@@ -19,13 +19,13 @@
 import PackageDescription
 
 let package = Package(
-  name: "github-comment",
+  name: "GitHubComment",
   dependencies: [
     .package(url: "https://github.com/apple/swift-package-manager.git", from: "0.1.0"),
   ],
   targets: [
-    .target(name: "GitHub"),
-    .target(name: "GitHubComment", dependencies: ["GitHub", "Utility"]),
+    .target(name: "GitHub", dependencies: ["Utility"]),
+    .target(name: "github-comment", dependencies: ["GitHub", "Utility"]),
   ]
 )
 
