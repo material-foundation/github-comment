@@ -15,11 +15,12 @@
  */
 
 import Foundation
+import Utility
 
-struct Hunk {
-  let beforeRange: Range<Int>
-  let afterRange: Range<Int>
-  let contents: [String]
+public struct Hunk {
+  public let beforeRange: Range<Int>
+  public let afterRange: Range<Int>
+  public let contents: [String]
 }
 
 /**
@@ -30,7 +31,7 @@ struct Hunk {
 
  // Before and after may match if no files were moved added or deleted.
  */
-func hunksFromDiff(_ diffString: String) -> (before: [String: [Hunk]], after: [String: [Hunk]]) {
+public func hunksFromDiff(_ diffString: String) -> (before: [String: [Hunk]], after: [String: [Hunk]]) {
   var beforeHunks: [String: [Hunk]] = [:]
   var afterHunks: [String: [Hunk]] = [:]
 

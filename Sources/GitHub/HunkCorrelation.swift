@@ -32,7 +32,7 @@ import Foundation
  > line is position 2, and so on. The position in the diff continues to increase through lines
  > of whitespace and additional hunks until the beginning of a new file.
  */
-func githubPosition(for hunk: Hunk, in hunks: [Hunk]) -> Int? {
+public func githubPosition(for hunk: Hunk, in hunks: [Hunk]) -> Int? {
   // Our hunk ranges line up like so:
   // hunks.beforeRange = original code
   // hunks.afterRange  = pull request changes
