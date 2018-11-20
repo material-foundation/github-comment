@@ -15,6 +15,7 @@
  */
 
 import Foundation
+import GitHub
 import Utility
 
 // MARK: Argument parsing
