@@ -19,14 +19,14 @@ import Foundation
 /**
  An instance of this object is able to make authenticated requests to the GitHub API.
  */
-class GitHub {
-  init(token: String) {
+public class GitHub {
+  public init(token: String) {
     self.token = token
   }
   let token: String
 }
 
-protocol GitHubObject {
+public protocol GitHubObject {
   associatedtype JsonFormat
   init(json: JsonFormat)
 }

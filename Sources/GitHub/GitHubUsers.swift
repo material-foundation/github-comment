@@ -17,15 +17,15 @@
 import Foundation
 
 extension GitHub {
-  struct User: GitHubObject {
-    typealias JsonFormat = [String: Any]
-    init(json: JsonFormat) {
+  public struct User: GitHubObject {
+    public typealias JsonFormat = [String: Any]
+    public init(json: JsonFormat) {
       self.json = json
     }
     private let json: JsonFormat
 
-    var id: Int? { get { return json["id"] as? Int } }
-    var name: String? { get { return json["name"] as? String } }
-    var login: String? { get { return json["login"] as? String } }
+    public var id: Int? { get { return json["id"] as? Int } }
+    public var name: String? { get { return json["name"] as? String } }
+    public var login: String? { get { return json["login"] as? String } }
   }
 }

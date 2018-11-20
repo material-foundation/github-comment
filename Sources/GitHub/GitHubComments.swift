@@ -17,16 +17,16 @@
 import Foundation
 
 extension GitHub {
-  struct Comment: GitHubObject {
-    typealias JsonFormat = [String: Any]
-    init(json: JsonFormat) {
+  public struct Comment: GitHubObject {
+    public typealias JsonFormat = [String: Any]
+    public init(json: JsonFormat) {
       self.json = json
     }
     private let json: JsonFormat
 
-    var id: Int? { get { return json["id"] as? Int } }
-    var body: String? { get { return json["body"] as? String } }
-    var user: User? {
+    public var id: Int? { get { return json["id"] as? Int } }
+    public var body: String? { get { return json["body"] as? String } }
+    public var user: User? {
       get {
         guard let user = json["user"] as? User.JsonFormat else {
           return nil
@@ -36,14 +36,14 @@ extension GitHub {
     }
   }
 
-  struct CommentList: GitHubObject {
-    typealias JsonFormat = [Comment.JsonFormat]
-    init(json: JsonFormat) {
+  public struct CommentList: GitHubObject {
+    public typealias JsonFormat = [Comment.JsonFormat]
+    public init(json: JsonFormat) {
       self.json = json
     }
     private let json: JsonFormat
 
-    var comments: [Comment]? {
+    public var comments: [Comment]? {
       get {
         return json.map { Comment(json: $0) }
       }
