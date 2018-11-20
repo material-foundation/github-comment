@@ -29,7 +29,7 @@ extension GitHub {
                      Return true to continue paginating.
                      Return false to stop paginating.
    */
-  func getAll(startingFrom urlAsString: String, didSucceed: (Any) -> Bool) {
+  public func getAll(startingFrom urlAsString: String, didSucceed: (Any) -> Bool) {
     var nextUrl = URL(string: apiUrlBase + urlAsString)
     while let url = nextUrl {
       let request = authenticated(request: URLRequest(url: url))
@@ -65,7 +65,7 @@ extension GitHub {
    @param urlAsString An API url to request. Should be relative to https://api.github.com/
    @param didSucceed Invoked with the response data parsed as json.
    */
-  func get<T: GitHubObject>(from urlAsString: String) -> T? {
+  public func get<T: GitHubObject>(from urlAsString: String) -> T? {
     guard let url = URL(string: apiUrlBase + urlAsString) else {
       return nil
     }
@@ -94,7 +94,7 @@ extension GitHub {
    @param urlAsString An API url to request. Should be relative to https://api.github.com/
    @param additionalHeaders Optional additional request headers.
    */
-  func get(from urlAsString: String, additionalHeaders: [String: String]? = nil) -> String? {
+  public func get(from urlAsString: String, additionalHeaders: [String: String]? = nil) -> String? {
     guard let url = URL(string: apiUrlBase + urlAsString) else {
       return nil
     }
@@ -124,7 +124,7 @@ extension GitHub {
    @param json The json data to send.
    @returns The parsed json object.
    */
-  @discardableResult func patch(to urlAsString: String, json: Any) -> Any? {
+  @discardableResult public func patch(to urlAsString: String, json: Any) -> Any? {
     return mutate(urlAsString: urlAsString, method: "PATCH", json: json)
   }
 
@@ -135,7 +135,7 @@ extension GitHub {
    @param json The json data to send.
    @returns The parsed json object.
    */
-  @discardableResult func post(to urlAsString: String, json: Any) -> Any? {
+  @discardableResult public func post(to urlAsString: String, json: Any) -> Any? {
     return mutate(urlAsString: urlAsString, method: "POST", json: json)
   }
 
@@ -146,7 +146,7 @@ extension GitHub {
    @param didSucceed Invoked with the response data parsed as json.
    @returns The parsed json object.
    */
-  @discardableResult func delete(at urlAsString: String) -> Any? {
+  @discardableResult public func delete(at urlAsString: String) -> Any? {
     return mutate(urlAsString: urlAsString, method: "DELETE", json: nil)
   }
 

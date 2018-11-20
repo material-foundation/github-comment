@@ -16,17 +16,16 @@
 
 import Foundation
 
-/**
- An instance of this object is able to make authenticated requests to the GitHub API.
- */
-class GitHub {
-  init(token: String) {
-    self.token = token
-  }
-  let token: String
-}
+extension GitHub {
+  public struct User: GitHubObject {
+    public typealias JsonFormat = [String: Any]
+    public init(json: JsonFormat) {
+      self.json = json
+    }
+    private let json: JsonFormat
 
-protocol GitHubObject {
-  associatedtype JsonFormat
-  init(json: JsonFormat)
+    public var id: Int? { get { return json["id"] as? Int } }
+    public var name: String? { get { return json["name"] as? String } }
+    public var login: String? { get { return json["login"] as? String } }
+  }
 }

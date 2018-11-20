@@ -16,16 +16,17 @@
 
 import Foundation
 
-extension GitHub {
-  struct User: GitHubObject {
-    typealias JsonFormat = [String: Any]
-    init(json: JsonFormat) {
-      self.json = json
-    }
-    private let json: JsonFormat
-
-    var id: Int? { get { return json["id"] as? Int } }
-    var name: String? { get { return json["name"] as? String } }
-    var login: String? { get { return json["login"] as? String } }
+/**
+ An instance of this object is able to make authenticated requests to the GitHub API.
+ */
+public class GitHub {
+  public init(token: String) {
+    self.token = token
   }
+  let token: String
+}
+
+public protocol GitHubObject {
+  associatedtype JsonFormat
+  init(json: JsonFormat)
 }
